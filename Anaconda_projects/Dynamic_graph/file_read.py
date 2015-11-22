@@ -1,11 +1,21 @@
 import sys
 import glob
-pullData = [[]]
+pullData = []
 i = 0;
-for name in glob.glob('/Users/agoston_developer/Anaconda_projects/Dynamic_graph/dynamic/*'):
+validLetters = "ABCDEF0123456789"
+for name in glob.glob('dynamic/*'):
+    print(name)
     data = open(name,"r").read();
-    print data
-    pullData[[data]] 
+    dataArray_raw = data.split('\n')
+    dataArray = []
+    for eachLine in dataArray_raw:
+        newString=''
+        for char in eachLine:
+            if char in validLetters:
+                newString += char
+        dataArray.append(newString)
+    pullData.append(dataArray) 
     print pullData
+    print "\n\n"
     i += 1
 print pullData
